@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+  <category>
+    <pattern>*</pattern>
+    <template>Não entendi, pode falar de outra forma?</template>
+  </category>
+  
+   <category>
+        <pattern>$OI ^</pattern>
+        <template>Olá! Como você chama?</template>
+    </category>
+    <category>
+        <pattern>$OLÁ ^</pattern>
+        <template>Olá! Como você chama?</template>
+    </category>
+    <category>
+        <pattern>$OLA ^</pattern>
+        <template>Olá! Como você chama?</template>
+    </category>
+  <category>
+      <pattern>MEU NOME É ^</pattern>
+      <template> Fala aí <set name="name"><star index ="1"/></set>, como posso te ajudar?</template>
+  </category>
+  
+   <category>
+      <pattern>COMO É MEU NOME</pattern>
+      <template> Seu nome é <get name="name"></get>, Tá esquecido hein  <get name="name"></get></template>
+  </category>
+
+<category>
+    <pattern>CONTE DE <set>number</set> ATÉ <set>number</set></pattern>
+    <template>
+        <set name="count"><star/></set><break/>
+        <condition name="count">
+            <li><value><star index="2" /></value></li>
+            <li>
+                <set name="count">
+                    <map name="successor"> <get name="count" /></map>
+                </set>
+                <break/>
+                <loop/>
+            </li>
+        </condition>
+    </template>
+</category>
+</aiml>
